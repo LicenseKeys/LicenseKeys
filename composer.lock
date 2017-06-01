@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4dff2453fbd286b57d5a65ae1929fac",
+    "content-hash": "735f8317b2cbd8ab974d88f30e3af19e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -108,30 +108,47 @@
         },
         {
             "name": "dompdf/dompdf",
-            "version": "v0.6.2",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "cc06008f75262510ee135b8cbb14e333a309f651"
+                "reference": "0f418c6b58fdeafc2a0e80eb1fa5e644e185089c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/cc06008f75262510ee135b8cbb14e333a309f651",
-                "reference": "cc06008f75262510ee135b8cbb14e333a309f651",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/0f418c6b58fdeafc2a0e80eb1fa5e644e185089c",
+                "reference": "0f418c6b58fdeafc2a0e80eb1fa5e644e185089c",
                 "shasum": ""
             },
             "require": {
-                "phenx/php-font-lib": "0.2.*"
+                "ext-dom": "*",
+                "ext-gd": "*",
+                "ext-mbstring": "*",
+                "phenx/php-font-lib": "0.5.*",
+                "phenx/php-svg-lib": "0.2.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*",
+                "squizlabs/php_codesniffer": "2.*"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.7-dev"
+                }
+            },
             "autoload": {
+                "psr-4": {
+                    "Dompdf\\": "src/"
+                },
                 "classmap": [
-                    "include/"
+                    "lib/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL"
+                "LGPL-2.1"
             ],
             "authors": [
                 {
@@ -141,11 +158,15 @@
                 {
                     "name": "Brian Sweeney",
                     "email": "eclecticgeek@gmail.com"
+                },
+                {
+                    "name": "Gabriel Bull",
+                    "email": "me@gabrielbull.com"
                 }
             ],
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
-            "time": "2015-12-07T04:07:13+00:00"
+            "time": "2017-02-16T02:40:40+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -278,25 +299,25 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "v7.0.1",
+            "version": "v7.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier.git",
-                "reference": "be91d37fc0d3bfb432cdecc06e4b0cfa7b88335b"
+                "reference": "adcc91cb58261a19ea2ca4373d4e80585f008bef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier/zipball/be91d37fc0d3bfb432cdecc06e4b0cfa7b88335b",
-                "reference": "be91d37fc0d3bfb432cdecc06e4b0cfa7b88335b",
+                "url": "https://api.github.com/repos/laravel/cashier/zipball/adcc91cb58261a19ea2ca4373d4e80585f008bef",
+                "reference": "adcc91cb58261a19ea2ca4373d4e80585f008bef",
                 "shasum": ""
             },
             "require": {
-                "dompdf/dompdf": "^0.6.1",
+                "dompdf/dompdf": "^0.8.0",
                 "illuminate/database": "~5.3",
                 "illuminate/support": "~5.3",
                 "nesbot/carbon": "~1.0",
                 "php": ">=5.5.9",
-                "stripe/stripe-php": "~3.0",
+                "stripe/stripe-php": "~4.0",
                 "symfony/http-kernel": "~2.7|~3.0"
             },
             "require-dev": {
@@ -334,7 +355,7 @@
                 "laravel",
                 "stripe"
             ],
-            "time": "2016-08-16T18:41:04+00:00"
+            "time": "2017-03-28T13:05:23+00:00"
         },
         {
             "name": "laravel/framework",
@@ -882,27 +903,30 @@
         },
         {
             "name": "phenx/php-font-lib",
-            "version": "0.2.2",
+            "version": "0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhenX/php-font-lib.git",
-                "reference": "c30c7fc00a6b0d863e9bb4c5d5dd015298b2dc82"
+                "reference": "19ad2bebc35be028fcc0221025fcbf3d436a3962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/c30c7fc00a6b0d863e9bb4c5d5dd015298b2dc82",
-                "reference": "c30c7fc00a6b0d863e9bb4c5d5dd015298b2dc82",
+                "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/19ad2bebc35be028fcc0221025fcbf3d436a3962",
+                "reference": "19ad2bebc35be028fcc0221025fcbf3d436a3962",
                 "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "classes/"
-                ]
+                "psr-4": {
+                    "FontLib\\": "src/FontLib"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL"
+                "LGPL-3.0"
             ],
             "authors": [
                 {
@@ -912,7 +936,44 @@
             ],
             "description": "A library to read, parse, export and make subsets of different types of font files.",
             "homepage": "https://github.com/PhenX/php-font-lib",
-            "time": "2014-02-01T15:22:28+00:00"
+            "time": "2017-02-11T10:58:43+00:00"
+        },
+        {
+            "name": "phenx/php-svg-lib",
+            "version": "v0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PhenX/php-svg-lib.git",
+                "reference": "de291bec8449b89acfe85691b5c71434797959dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PhenX/php-svg-lib/zipball/de291bec8449b89acfe85691b5c71434797959dc",
+                "reference": "de291bec8449b89acfe85691b5c71434797959dc",
+                "shasum": ""
+            },
+            "require": {
+                "sabberworm/php-css-parser": "6.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Svg\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Ménager",
+                    "email": "fabien.menager@gmail.com"
+                }
+            ],
+            "description": "A library to read, parse and export to PDF SVG files.",
+            "homepage": "https://github.com/PhenX/php-svg-lib",
+            "time": "2016-12-13T20:25:45+00:00"
         },
         {
             "name": "psr/log",
@@ -1117,17 +1178,58 @@
             "time": "2017-03-26T20:37:53+00:00"
         },
         {
-            "name": "stripe/stripe-php",
-            "version": "v3.23.0",
+            "name": "sabberworm/php-css-parser",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "c702a2ed92f4b39603c4a796492d87bcc16c819c"
+                "url": "https://github.com/sabberworm/PHP-CSS-Parser.git",
+                "reference": "9ea4b00c569b19f731d0c2e0e802055877ff40c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c702a2ed92f4b39603c4a796492d87bcc16c819c",
-                "reference": "c702a2ed92f4b39603c4a796492d87bcc16c819c",
+                "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/9ea4b00c569b19f731d0c2e0e802055877ff40c2",
+                "reference": "9ea4b00c569b19f731d0c2e0e802055877ff40c2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Sabberworm\\CSS": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raphael Schweikert"
+                }
+            ],
+            "description": "Parser for CSS Files written in PHP",
+            "homepage": "http://www.sabberworm.com/blog/2010/6/10/php-css-parser",
+            "keywords": [
+                "css",
+                "parser",
+                "stylesheet"
+            ],
+            "time": "2015-08-24T08:48:52+00:00"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v4.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "4844ef4693f2a4de70bfa7848c9571ed6ac06b75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/4844ef4693f2a4de70bfa7848c9571ed6ac06b75",
+                "reference": "4844ef4693f2a4de70bfa7848c9571ed6ac06b75",
                 "shasum": ""
             },
             "require": {
@@ -1169,7 +1271,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2016-09-15T18:16:59+00:00"
+            "time": "2017-05-25T21:38:10+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

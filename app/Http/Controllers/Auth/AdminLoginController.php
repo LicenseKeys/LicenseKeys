@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Auth;
 
 class AdminLoginController extends Controller
@@ -19,26 +20,15 @@ class AdminLoginController extends Controller
     |
     */
 
-  protected $username = 'username';
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    protected $username = 'username';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
     }
     public function showLogin()
     {
-      return view('');
+      return view('admins.auth.login');
     }
     public function login(Request $request)
     {
@@ -52,8 +42,9 @@ class AdminLoginController extends Controller
       // Attempt login
       //
       if(Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password], $request->remember)){
-        return redirect()->back()->withInput($request->only('username', 'remember'));
+        return redirect()->intended(route('admin.dashboard'));
       }
+      return redirect()->back()->withInput($request->only('username', 'remember'));
     }
     public function username()
     {

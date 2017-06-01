@@ -12,9 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
+// Admin Routes
+Route::group(['prefix' => 'admin'], function(){
+  Route::get('/', 'Auth\AdminController@index')->name('admin.dashboard');
+  Route::get('login', 'Auth\AdminLoginController@showLogin')->name('admin.login');
+  Route::post('login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+  Route::get('logout', 'Auth\AdminLoginController@logout')->name('adminLogout');
+});
 
+// User Routes
 Route::get('/home', 'HomeController@index')->name('home');
