@@ -1,0 +1,47 @@
+.info{
+  padding: 25px !important;
+}
+.tile{
+  padding: 20px;
+  background-color: #cdcdcd;
+  border-right: 2px solid #fdfdfd;
+  text-align: center;
+    a{
+      color: #fff;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    a:hover{
+      color: #898989;
+    }
+    .icon{
+      right: 10px;
+      top: 10px;
+      position: absolute;
+      font-size: 40px;
+    }
+    .title{
+      font-size: 15px;
+      float: left;
+      width: 100%;
+      text-align: left;
+    }
+    .stat{
+      font-size: 30px;
+      float: left;
+      width: 100%;
+      text-align: left;
+    }
+    .highlight{
+      width: 100%;
+      height: 5px;
+      content: "";
+      bottom: 0;
+      position: absolute;
+      left: 0;
+    }
+}
+.tile:last-child{
+  border: none;
+}

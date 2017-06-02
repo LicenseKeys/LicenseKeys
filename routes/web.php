@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('website.home');
 });
 
 Auth::routes();
+
 // Admin Routes
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/', 'Auth\AdminController@index')->name('admin.dashboard');
@@ -25,4 +26,13 @@ Route::group(['prefix' => 'admin'], function(){
 });
 
 // User Routes
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'user'], function(){
+  Route::get('/', 'HomeController@index')->name('user.home');
+  Route::get('/invoices', 'HomeController@invoices')->name('user.invoices');
+  Route::get('/tickets', 'HomeController@tickets')->name('user.tickets');
+  Route::get('/services', 'HomeController@services')->name('user.services');
+});
+
+
+
+// Website Routes
