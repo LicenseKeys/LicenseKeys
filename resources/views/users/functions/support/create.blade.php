@@ -1,7 +1,4 @@
 @extends('users.home')
 @section('title')
-Services
-@endsection
-@section('dashboardcontent')
-
+New Support Ticket
 @endsection

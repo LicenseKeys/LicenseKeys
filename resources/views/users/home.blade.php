@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav">
           <li><a href="{{route('user.home')}}">Home</a></li>
           <li><a href="{{route('user.services')}}">Services</a></li>
-          <li><a href="{{route('user.tickets')}}">Tickets</a></li>
+          <li><a href="{{route('user.tickets')}}">Support</a></li>
           <li><a href="{{route('user.invoices')}}">Invoices</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -24,7 +24,6 @@
             <ul class="dropdown-menu">
               <li><a href="{{ route('user.useredit') }}">Edit Account Details</a></li>
               <li><a href="{{ route('user.passedit') }}">Change Password</a></li>
-              <li><a href="{{ route('user.security') }}">Security Settings</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

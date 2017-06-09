@@ -25,10 +25,6 @@ class UserController extends Controller
   {
     return view('users.dashboard.invoices');
   }
-  public function tickets()
-  {
-    return view('users.dashboard.tickets');
-  }
   public function services()
   {
     return view('users.dashboard.services');
@@ -40,9 +36,5 @@ class UserController extends Controller
   public function editPass()
   {
     return view('users.dashboard.changepass');
-  }
-  public function editSec()
-  {
-    return view('users.dashboard.security');
   }
 }
