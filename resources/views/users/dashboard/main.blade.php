@@ -23,7 +23,7 @@ Dashboard
         </a>
       </div>
       <div class="col-sm-4 col-xs-6 tile">
-        <a href="{{ route('user.tickets') }}">
+        <a href="{{ route('user.support') }}">
           <div class="icon"><span class="glyphicon glyphicon-comment"></span></div>
           <div class="stat">0</div>
           <div class="title">Support Tickets</div>

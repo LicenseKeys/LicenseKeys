@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav">
           <li><a href="{{route('user.home')}}">Home</a></li>
           <li><a href="{{route('user.services')}}">Services</a></li>
-          <li><a href="{{route('user.tickets')}}">Support</a></li>
+          <li><a href="{{route('user.support')}}">Support</a></li>
           <li><a href="{{route('user.invoices')}}">Invoices</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

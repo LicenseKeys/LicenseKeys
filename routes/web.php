@@ -29,8 +29,8 @@ Route::group(['prefix' => 'admin'], function(){
 Route::group(['prefix' => 'user'], function(){
   Route::get('/', 'User\UserController@index')->name('user.home');
   Route::get('/invoices', 'User\UserController@invoices')->name('user.invoices');
-  Route::get('/tickets', 'Support\UserTickets@listTickets')->name('user.tickets');
-  Route::get('/tickets/new', 'Support\UserTickets@createTicket')->name('user.tickets.create');
+  Route::get('/support', 'Support\UserTickets@listTickets')->name('user.support');
+  Route::get('/support/new', 'Support\UserTickets@createTicket')->name('user.support.create');
   Route::get('/services', 'User\UserController@services')->name('user.services');
   Route::get('/account', 'User\UserController@editUser')->name('user.useredit');
   Route::get('/pass', 'User\UserController@editPass')->name('user.passedit');
