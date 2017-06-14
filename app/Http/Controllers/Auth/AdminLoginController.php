@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Auth;
+
 
 class AdminLoginController extends Controller
 {
@@ -46,8 +47,19 @@ class AdminLoginController extends Controller
       }
       return redirect()->back()->withInput($request->only('username', 'remember'));
     }
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+        return redirect()->route('admin.login');
+    }
     public function username()
     {
       return 'username';
+    }
+    protected function guard()
+    {
+        return Auth::guard();
     }
 }

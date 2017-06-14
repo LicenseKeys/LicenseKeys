@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin'], function(){
   Route::get('/', 'Auth\AdminController@index')->name('admin.dashboard');
   Route::get('login', 'Auth\AdminLoginController@showLogin')->name('admin.login');
   Route::post('login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-  Route::get('logout', 'Auth\AdminLoginController@logout')->name('adminLogout');
+  Route::post('logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
 
 // User Routes

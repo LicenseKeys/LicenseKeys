@@ -4,7 +4,46 @@
   border: none;
   margin-bottom: 10px;
   border-bottom: 5px solid #5bc0de;
+  min-height: 56px;
+  color: #fff;
   a{
     color: #fff;
+  }
+  .dropdown{
+    color: #fff;
+  }
+  .dropdown-menu{
+    border-radius: 0 !important;
+  }
+  .dropdown-item{
+    color: #000;
+  }
+  .navbar-toggler{
+    border-color: #e7e7e7;
+  }
+  .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path stroke='#e7e7e7' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/></svg>");
+  }
+}
+.navbar{
+  .container{
+    @media screen and (max-width: 576px) {
+      width: 100%;
+      float: none;
+    }
+  }
+}
+.quick{
+  .card-header{
+    font-size: 15px;
+  }
+  .list-group-item{
+    width: 100%;
+    display: block;
+    font-size: 13px;
+    .badge{
+      float: right;
+      padding: 0.6em 1.0em;
+    }
   }
 }

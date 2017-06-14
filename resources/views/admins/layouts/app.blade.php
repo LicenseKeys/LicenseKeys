@@ -15,37 +15,27 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+      <nav class="navbar navbar-toggleable-md navbar-user">
+          <div class="navbar-header">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#user-nav" aria-controls="user-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-brand">{{ config('app.name', 'Laravel') }}</div>
+          </div>
+          <div class="collapse navbar-collapse" id="user-nav">
+            <ul class="nav navbar-nav mr-auto">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                    </ul>
-                </div>
-            </div>
-        </nav>
+            </ul>
+            <ul class="nav navbar-nav my-2 my-lg-0">
+              @if (Auth::check())
+                  <li class="nav-item"><a class="nav-link" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                  <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+              @endif
+            </ul>
+          </div>
+      </nav>
 
         @yield('content')
     </div>

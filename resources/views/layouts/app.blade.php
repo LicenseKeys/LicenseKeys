@@ -32,39 +32,33 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded mb-4">
             <div class="container">
                 <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mainnav" aria-controls="mainnav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
                     </button>
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('img/logos/logo.png')}}">
-                        <h3 class="navbar-text">{{ config('app.name', 'Laravel') }}</h3>
+                        <img src="{{ asset('img/logos/logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt="">
+                        {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse" id="mainnav">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    <ul class="navbar-nav mr-auto">
                         &nbsp;
                     </ul>
-
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="navbar-nav mt-2 mt-md-0">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="{{ route('user.home') }}">Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user.home') }}">Dashboard</a></li>
                         @endif
                     </ul>
                 </div>
