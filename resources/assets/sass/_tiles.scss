@@ -1,11 +1,11 @@
-.info{
-  padding: 25px !important;
-}
 .tile{
   padding: 20px;
   background-color: #cdcdcd;
   border-right: 2px solid #fdfdfd;
   text-align: center;
+  @media screen and (max-width: 992px){
+    border: none;
+  }
     a{
       color: #fff;
       width: 100%;
@@ -44,4 +44,36 @@
 }
 .tile:last-child{
   border: none;
+}
+.tile-side{
+  width: 100%;
+  height: auto;
+  background-color: #cdcdcd;
+  a{
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: 25px;
+  }
+  a:hover{
+    color: #898989;
+  }
+  .icon{
+    width: 20%;
+    float: right;
+    display: inline-block;
+  }
+  .title{
+    width: 80%;
+    display: inline-block;
+  }
+  .highlight{
+    width: 100%;
+    height: 5px;
+    content: "";
+    bottom: 0;
+    position: absolute;
+    left: 0;
+  }
 }

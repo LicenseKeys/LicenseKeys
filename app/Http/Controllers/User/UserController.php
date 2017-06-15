@@ -4,7 +4,8 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Auth;
+use DB;
 class UserController extends Controller
 {
   public function __construct()
@@ -31,7 +32,9 @@ class UserController extends Controller
   }
   public function editUser()
   {
-    return view('users.dashboard.editaccount');
+    $userid = Auth::user()->id;
+    $user = DB::table('users')->where('id', $userid)->first();
+    return view('users.dashboard.editaccount')->with(['user' => $user]);
   }
   public function editPass()
   {
