@@ -10,13 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('website.home');
-});
-
-Auth::routes();
-
 // Admin Routes
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/', 'Auth\AdminController@index')->name('admin.dashboard');
@@ -26,6 +19,7 @@ Route::group(['prefix' => 'admin'], function(){
 });
 
 // User Routes
+Auth::routes();
 Route::group(['prefix' => 'user'], function(){
   Route::get('/', 'User\UserController@index')->name('user.home');
   Route::get('/invoices', 'User\UserController@invoices')->name('user.invoices');
@@ -33,8 +27,13 @@ Route::group(['prefix' => 'user'], function(){
   Route::get('/support/new', 'Support\UserTickets@createTicket')->name('user.support.create');
   Route::get('/services', 'User\UserController@services')->name('user.services');
   Route::get('/account', 'User\UserController@editUser')->name('user.useredit');
+  Route::post('/account/update', 'User\UserInformationUpdater@updateUser')->name('user.update');
   Route::get('/pass', 'User\UserController@editPass')->name('user.passedit');
+  Route::post('/pass/change', 'User\UserInformationUpdater@changePass')->name('user.passupdate');
 });
-Route::get('support', 'Support\UserTickets@listTickets');
-Route::get('support/{slug}', 'Support\UserTickets@view');
+  Route::get('support', 'Support\UserTickets@listTickets')->name('support.home');
+  Route::get('support/{slug}', 'Support\UserTickets@view')->name('support.specific');
 // Website Routes
+Route::get('/', function () {
+    return view('website.home');
+});

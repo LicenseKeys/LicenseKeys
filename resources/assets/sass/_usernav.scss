@@ -1,8 +1,9 @@
 .navbar-user{
-  background-color: #cdcdcd;
+  background-color: $navbar-custom-bg;
   border-radius: 0 !important;
   border: none;
-  margin-bottom: 10px;
+  padding-bottom: 0;
+  margin-bottom: 0px;
   border-bottom: 5px solid #5bc0de;
   min-height: 56px;
   color: #fff;

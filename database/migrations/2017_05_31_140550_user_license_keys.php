@@ -19,6 +19,7 @@ class UserLicenseKeys extends Migration
         $table->string('stripe_id');
         $table->string('state');
         $table->string('license_key');
+        $table->integer('pid');
         $table->timestamps();
       });
     }
@@ -30,6 +31,6 @@ class UserLicenseKeys extends Migration
      */
     public function down()
     {
-        //
+      Schema::dropIfExists('user_license_keys');
     }
 }

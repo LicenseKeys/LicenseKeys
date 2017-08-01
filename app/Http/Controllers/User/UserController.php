@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use DB;
+
+
 class UserController extends Controller
 {
   public function __construct()
   {
       $this->middleware('auth');
   }
-
   /**
    * Show the application dashboard.
    *
@@ -39,5 +40,5 @@ class UserController extends Controller
   public function editPass()
   {
     return view('users.dashboard.changepass');
-  }
+  }  
 }
