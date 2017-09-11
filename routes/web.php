@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 // User Routes
 Auth::routes();
-Route::group(['prefix' => 'user'], function(){
+Route::prefix('user')->middleware('user')->group( function(){
   Route::get('/', 'User\UserController@index')->name('user.home');
   Route::get('/invoices', 'User\UserController@invoices')->name('user.invoices');
   Route::get('/support', 'Support\UserTickets@listTickets')->name('user.support');
@@ -33,7 +33,6 @@ Route::group(['prefix' => 'user'], function(){
 });
   Route::get('support', 'Support\UserTickets@listTickets')->name('support.home');
   Route::get('support/{slug}', 'Support\UserTickets@view')->name('support.specific');
-// Website Routes
-Route::get('/', function () {
-    return view('website.home');
-});
+
+  // Website Routes
+Route::view('/','website.home');
