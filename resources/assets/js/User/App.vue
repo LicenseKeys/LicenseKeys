@@ -15,10 +15,10 @@
         </ul>
         <ul class="nav navbar-nav my-2 my-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ user.fname }}! <span class="caret"></span></a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ $store.state.userProfile.fname }}! <span class="caret"></span></a>
             <div class="dropdown-menu dropdown-menu-right">
               <router-link :to="{ name: 'EditAccount' }" class="dropdown-item">Edit Account Details</router-link>
-              <a class="dropdown-item" href="">Change Password</a>
+              <router-link :to="{ name: 'ChangePass' }" class="dropdown-item">Change Password</router-link>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" v-on:click="logOut">Logout</a>
             </div>
@@ -37,24 +37,8 @@ export default {
   name: 'app',
   methods: {
    logOut() {
-     axios.post('/logout');
-     window.location.href = '/login';
+     axios.post('/logout')
    }
   },
-  data() {
-    return {
-      user: []
-    }
-  },
-  created(){
-    axios.get('/api/user')
-      .then(response => {
-        this.user = response.data
-      })
-      .catch(e => {
-        this.errors.push(e)
-      })
-
-  }
 }
 </script>

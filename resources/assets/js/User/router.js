@@ -6,6 +6,8 @@ import Services from './components/Services.vue'
 import Tickets from './components/Tickets.vue'
 import Invoices from './components/Invoices.vue'
 import EditAccount from './components/account/Edit.vue'
+import ChangePass from './components/account/ChangePass.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +38,11 @@ export default new Router({
             path: '/edit',
             name: 'EditAccount',
             component: EditAccount
+        },
+        {
+            path: '/changepass',
+            name: 'ChangePass',
+            component: ChangePass
         }
     ]
 })
