@@ -10,29 +10,30 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Admin Routes
-Route::group(['prefix' => 'admin'], function(){
-  Route::get('/', 'Auth\AdminController@index')->name('admin.dashboard');
-  Route::get('login', 'Auth\AdminLoginController@showLogin')->name('admin.login');
-  Route::post('login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-  Route::post('logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-});
 
+//
 // User Routes
+// Default Laravel Auth Routes
 Auth::routes();
-Route::prefix('user')->middleware('user')->group( function(){
-  Route::get('/', 'User\UserController@index')->name('user.home');
-  Route::get('/invoices', 'User\UserController@invoices')->name('user.invoices');
-  Route::get('/support', 'Support\UserTickets@listTickets')->name('user.support');
-  Route::get('/support/new', 'Support\UserTickets@createTicket')->name('user.support.create');
-  Route::get('/services', 'User\UserController@services')->name('user.services');
-  Route::get('/account', 'User\UserController@editUser')->name('user.useredit');
-  Route::post('/account/update', 'User\UserInformationUpdater@updateUser')->name('user.update');
-  Route::get('/pass', 'User\UserController@editPass')->name('user.passedit');
-  Route::post('/pass/change', 'User\UserInformationUpdater@changePass')->name('user.passupdate');
-});
-  Route::get('support', 'Support\UserTickets@listTickets')->name('support.home');
-  Route::get('support/{slug}', 'Support\UserTickets@view')->name('support.specific');
+// User Account Control Panel
+Route::prefix('user')->middleware('auth','role:user')->group( function(){
+  Route::any('/', function(){
+    return view('users.spa');
+  })->name('user.home');
+  Route::any('/{all}', function() {
+    return View('users.spa');
+  })->where(['all' => '.*']);
 
-  // Website Routes
+  // Route::get('/invoices', 'User\UserController@invoices')->name('user.invoices');
+  // Route::get('/support', 'Support\UserTickets@listTickets')->name('user.support');
+  // Route::get('/support/new', 'Support\UserTickets@createTicket')->name('user.support.create');
+  // Route::get('support/{slug}', 'Support\UserTickets@view')->name('support.specific'); 
+  // Route::get('/services', 'User\UserController@services')->name('user.services');
+  // Route::get('/account', 'User\UserController@editUser')->name('user.useredit');
+  // Route::post('/account/update', 'User\UserController@updateUser')->name('user.update');
+  // Route::get('/pass', 'User\UserController@editPass')->name('user.passedit');
+  // Route::post('/pass/change', 'User\UserInformationUpdater@changePass')->name('user.passupdate');
+});
+
+// Website Routes
 Route::view('/','website.home');

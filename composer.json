@@ -9,6 +9,7 @@
         "dompdf/dompdf": "^0.8.0",
         "laravel/cashier": "~7.0.1",
         "laravel/framework": "5.5.*",
+        "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
         "nesbot/carbon": "^1.22",
         "santigarcor/laratrust": "4.0.*"

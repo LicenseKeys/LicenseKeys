@@ -48,5 +48,8 @@ class SupportTickets extends Migration
     public function down()
     {
       Schema::dropIfExists('support_tickets');
+      Schema::dropIfExists('support_responses');
+      Schema::dropIfExists('support_statuses');
+      
     }
 }

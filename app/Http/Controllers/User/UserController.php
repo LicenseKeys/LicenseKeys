@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use DB;
+use Carbon\Carbon;
 
 
 class UserController extends Controller
@@ -14,31 +15,58 @@ class UserController extends Controller
   {
       $this->middleware('auth');
   }
-  /**
-   * Show the application dashboard.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function index()
-  {
-      return view('users.dashboard.main');
-  }
-  public function invoices()
-  {
-    return view('users.dashboard.invoices');
-  }
-  public function services()
-  {
-    return view('users.dashboard.services');
-  }
   public function editUser()
   {
     $userid = Auth::user()->id;
     $user = DB::table('users')->where('id', $userid)->first();
     return view('users.dashboard.editaccount')->with(['user' => $user]);
   }
-  public function editPass()
+  public function updateUser(Request $request)
   {
-    return view('users.dashboard.changepass');
-  }  
+    $userid = Auth::user()->id;
+    $this->validate($request, [
+        'email' => 'required',
+        'username' => 'min:6|max:255|required',
+    ]);
+    DB::table('users')
+      ->where('id', $userid)
+      ->update([
+        'fname' => $request->fname, 
+        'lname' => $request->lname,
+        'email' => $request->email,
+        'username' => $request->username,
+        'updated_at' => Carbon::now()
+        ]);
+    return "
+      <div class='alert alert-success' role='alert'>
+        <strong>Complete</strong> Your information has been successfully updated!
+      </div>
+    ";
+  }
+
+  public function changePass(Request $request)
+  {
+    $user = Auth::user()->id;
+    $oldpass = DB::table('users')->where('id', $user)->select('password');
+    // Checking that old password matched what was in the DB
+    if(Hash::check($request->oldpass, $oldpass)){
+    // Checking password length
+      if(strlen($request->newpass) < 10 or strlen($request->newpass) > 120){
+          return 'Password length needs to be between 10 and 120 characters';
+      }
+    //Checking that new passwords match
+      if($request->newpass != $request->newpassconf){
+        return 'New passwords do not match';
+      }
+    // Updating the DB with new password hash
+      DB::table('users')
+        ->where('id', $user)
+        ->update([
+          'password'=> Hash::make($request->newpass),
+          ]);
+    return 'password updated successfully';
+    };
+    return 'password does not match old password.';
+
+  }
 }
