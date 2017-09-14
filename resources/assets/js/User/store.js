@@ -19,15 +19,38 @@ const store = new Vuex.Store({
             }, (err) => {
                 console.log(err)
             })
-        }
+        },
     },
     mutations: {
        SET_USER_DATA: (state, { user }) => {
-           state.userProfile = user
+        state.userProfile = user
+       },
+       UPDATE_FNAME: ( state, payload ) => {
+        state.userProfile.fname = payload
+       },
+       UPDATE_LNAME: ( state, payload ) => {
+        state.userProfile.lname = payload
+       },
+       UPDATE_EMAIL: ( state, payload ) => {
+        state.userProfile.email = payload
+       },
+       UPDATE_USERNAME: ( state, payload ) => {
+        state.userProfile.username = payload
        }
     },
     getters: {
-
+        fname( state ){
+            return state.userProfile.fname
+        },
+        lname( state ){
+            return state.userProfile.lname
+        },
+        username( state ){
+            return state.userProfile.username
+        },
+        email( state ){
+            return state.userProfile.email
+        }
     },
     modules: {
 

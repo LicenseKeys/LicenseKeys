@@ -15,12 +15,6 @@ class UserController extends Controller
   {
       $this->middleware('auth');
   }
-  public function editUser()
-  {
-    $userid = Auth::user()->id;
-    $user = DB::table('users')->where('id', $userid)->first();
-    return view('users.dashboard.editaccount')->with(['user' => $user]);
-  }
   public function updateUser(Request $request)
   {
     $userid = Auth::user()->id;
