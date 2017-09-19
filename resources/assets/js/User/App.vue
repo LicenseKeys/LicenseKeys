@@ -15,7 +15,7 @@
         </ul>
         <ul class="nav navbar-nav my-2 my-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ $store.state.userProfile.fname }}! <span class="caret"></span></a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ $store.state.userProfile.username }}! <span class="caret"></span></a>
             <div class="dropdown-menu dropdown-menu-right">
               <router-link :to="{ name: 'EditAccount' }" class="dropdown-item">Edit Account Details</router-link>
               <router-link :to="{ name: 'ChangePass' }" class="dropdown-item">Change Password</router-link>

@@ -1,28 +1,31 @@
 <template>
 <div class="container container-border">
   <form id="editUser" action="" method="POST">
+    <div id="form_success" role="alert"></div>
     <div class="form-group row">
       <label for="fname" class="col-sm-2 col-form-label">First Name:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="fname" v-model="fname">
+        <input type="text" class="form-control" id="fname" v-model="userInfo.fname">
       </div>
     </div>
     <div class="form-group row">
       <label for="lname" class="col-sm-2 col-form-label">Last Name:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="lname" v-model="lname">
+        <input type="text" class="form-control" id="lname" v-model="userInfo.lname">
       </div>
     </div>
     <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label">Email:</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" v-model="email">
+        <input type="email" class="form-control" id="email" v-model="userInfo.email">
+        <div id="error_email" class="col-sm-12 text-muted"></div>
       </div>
     </div>
     <div class="form-group row">
       <label for="username" class="col-sm-2 col-form-label">Username:</label>
       <div class="col-sm-10">
-        <input type="username" class="form-control" id="username" v-model="username">
+        <input type="username" class="form-control" id="username" v-model="userInfo.username">
+        <div id="error_username" class="col-sm-12 text-muted"></div>
       </div>
     </div>
     <div class="form-group row">
@@ -51,39 +54,19 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'app',
   methods: {
-   logOut() {
-     axios.post('/logout');
-     window.location.href = '/login';
-   },
    updateUser(){
-     axios.post('/api/user/update', { fname: this.fname, lname: this.lname, email: this.email, username: this.username })
-      .then(function(r){
-        this.$store.dispatch('LOAD_USER_DATA')
-      }).catch(function(error){
-        console.log(error)
-      });
+     this.$store.dispatch('UPDATE_USER', this.userInfo)
    }
   }, 
   computed: {
-    fname:{
-      get(){ return this.$store.getters.fname; },
-      set( value ){ this.$store.commit('UPDATE_FNAME', value); }
-    },
-    lname:{
-      get(){ return this.$store.getters.lname; },
-      set( value ){ this.$store.commit('UPDATE_LNAME', value); }
-    },
-    email:{
-      get(){ return this.$store.getters.email; },
-      set( value ){ this.$store.commit('UPDATE_EMAIL', value); }
-    },
-    username:{
-      get(){ return this.$store.getters.username; },
-      set( value ){ this.$store.commit('UPDATE_USERNAME', value); }
-    }
-  } 
+    ...mapGetters({
+        userInfo: 'userProfile'
+    }),
+  },
 }
 </script>
+

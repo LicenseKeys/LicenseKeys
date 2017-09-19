@@ -437,7 +437,7 @@ module.exports = function normalizeComponent (
 /* unused harmony export Store */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mapState; });
 /* unused harmony export mapMutations */
-/* unused harmony export mapGetters */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapGetters; });
 /* unused harmony export mapActions */
 /* unused harmony export createNamespacedHelpers */
 /**
@@ -15497,6 +15497,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
 //
 //
 //
@@ -15550,55 +15556,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app',
   methods: {
-    logOut() {
-      axios.post('/logout');
-      window.location.href = '/login';
-    },
     updateUser() {
-      axios.post('/api/user/update', { fname: this.fname, lname: this.lname, email: this.email, username: this.username }).then(function (r) {
-        this.$store.dispatch('LOAD_USER_DATA');
-      }).catch(function (error) {
-        console.log(error);
-      });
+      this.$store.dispatch('UPDATE_USER', this.userInfo);
     }
   },
-  computed: {
-    fname: {
-      get() {
-        return this.$store.getters.fname;
-      },
-      set(value) {
-        this.$store.commit('UPDATE_FNAME', value);
-      }
-    },
-    lname: {
-      get() {
-        return this.$store.getters.lname;
-      },
-      set(value) {
-        this.$store.commit('UPDATE_LNAME', value);
-      }
-    },
-    email: {
-      get() {
-        return this.$store.getters.email;
-      },
-      set(value) {
-        this.$store.commit('UPDATE_EMAIL', value);
-      }
-    },
-    username: {
-      get() {
-        return this.$store.getters.username;
-      },
-      set(value) {
-        this.$store.commit('UPDATE_USERNAME', value);
-      }
-    }
-  }
+  computed: _extends({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])({
+    userInfo: 'userProfile'
+  }))
 });
 
 /***/ }),
@@ -15682,51 +15650,58 @@ __webpack_require__(12);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_axios___default.a
-// API Settings
+// API Endpoints
 );const URL = '/api';
-const APIU = '/user';
+const APIUser = '/user';
+const userUpdate = URL + APIUser + '/update';
+
 const store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* default */].Store({
     state: {
-        userProfile: []
+        userProfile: {}
     },
     actions: {
         LOAD_USER_DATA: function ({ commit }) {
-            axios.get(URL + APIU).then(response => {
+            axios.get(URL + APIUser).then(response => {
                 commit('SET_USER_DATA', { user: response.data });
             }, err => {
                 console.log(err);
+            });
+        },
+        UPDATE_USER: function ({ dispatch, state }, { fname, lname, email, username }) {
+            axios.post(userUpdate, {
+                fname: fname,
+                lname: lname,
+                email: email,
+                username: username
+            }).then(function (f) {
+                dispatch('LOAD_USER_DATA');
+                var div = document.getElementById('form_success');
+                div.innerHTML = 'Profile Successfully Updated';
+                div.classList.add('alert', 'alert-success');
+                setTimeout(function () {
+                    div.innerHTML = '';
+                    div.classList.remove('alert', 'alert-success');
+                }, 7000);
+            }).catch(function (response) {
+                let e = Object.values(response.response.data);
+                for (var index in e[1]) {
+                    var div = document.getElementById('error_' + index);
+                    div.innerHTML = e[1][index][0];
+                    setTimeout(function () {
+                        div.innerHTML = '';
+                    }, 5000);
+                }
             });
         }
     },
     mutations: {
         SET_USER_DATA: (state, { user }) => {
             state.userProfile = user;
-        },
-        UPDATE_FNAME: (state, payload) => {
-            state.userProfile.fname = payload;
-        },
-        UPDATE_LNAME: (state, payload) => {
-            state.userProfile.lname = payload;
-        },
-        UPDATE_EMAIL: (state, payload) => {
-            state.userProfile.email = payload;
-        },
-        UPDATE_USERNAME: (state, payload) => {
-            state.userProfile.username = payload;
         }
     },
     getters: {
-        fname(state) {
-            return state.userProfile.fname;
-        },
-        lname(state) {
-            return state.userProfile.lname;
-        },
-        username(state) {
-            return state.userProfile.username;
-        },
-        email(state) {
-            return state.userProfile.email;
+        userProfile(state) {
+            return state.userProfile;
         }
     },
     modules: {}
@@ -49872,7 +49847,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-haspopup": "true",
       "aria-expanded": "false"
     }
-  }, [_vm._v("Hello, " + _vm._s(_vm.$store.state.userProfile.fname) + "! "), _c('span', {
+  }, [_vm._v("Hello, " + _vm._s(_vm.$store.state.userProfile.username) + "! "), _c('span', {
     staticClass: "caret"
   })]), _vm._v(" "), _c('div', {
     staticClass: "dropdown-menu dropdown-menu-right"
@@ -50109,6 +50084,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "method": "POST"
     }
   }, [_c('div', {
+    attrs: {
+      "id": "form_success",
+      "role": "alert"
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group row"
   }, [_c('label', {
     staticClass: "col-sm-2 col-form-label",
@@ -50121,8 +50101,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.fname),
-      expression: "fname"
+      value: (_vm.userInfo.fname),
+      expression: "userInfo.fname"
     }],
     staticClass: "form-control",
     attrs: {
@@ -50130,12 +50110,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "fname"
     },
     domProps: {
-      "value": (_vm.fname)
+      "value": (_vm.userInfo.fname)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.fname = $event.target.value
+        _vm.userInfo.fname = $event.target.value
       }
     }
   })])]), _vm._v(" "), _c('div', {
@@ -50151,8 +50131,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.lname),
-      expression: "lname"
+      value: (_vm.userInfo.lname),
+      expression: "userInfo.lname"
     }],
     staticClass: "form-control",
     attrs: {
@@ -50160,12 +50140,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "lname"
     },
     domProps: {
-      "value": (_vm.lname)
+      "value": (_vm.userInfo.lname)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.lname = $event.target.value
+        _vm.userInfo.lname = $event.target.value
       }
     }
   })])]), _vm._v(" "), _c('div', {
@@ -50181,8 +50161,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.email),
-      expression: "email"
+      value: (_vm.userInfo.email),
+      expression: "userInfo.email"
     }],
     staticClass: "form-control",
     attrs: {
@@ -50190,13 +50170,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "email"
     },
     domProps: {
-      "value": (_vm.email)
+      "value": (_vm.userInfo.email)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.email = $event.target.value
+        _vm.userInfo.email = $event.target.value
       }
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-12 text-muted",
+    attrs: {
+      "id": "error_email"
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "form-group row"
@@ -50211,8 +50196,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.username),
-      expression: "username"
+      value: (_vm.userInfo.username),
+      expression: "userInfo.username"
     }],
     staticClass: "form-control",
     attrs: {
@@ -50220,13 +50205,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "username"
     },
     domProps: {
-      "value": (_vm.username)
+      "value": (_vm.userInfo.username)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.username = $event.target.value
+        _vm.userInfo.username = $event.target.value
       }
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-12 text-muted",
+    attrs: {
+      "id": "error_username"
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "form-group row"
