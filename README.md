@@ -32,3 +32,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
+
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/WiYP33R1uUCxEsmhZDdVX1Ng/kennyLtv/LicenseKeys'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/WiYP33R1uUCxEsmhZDdVX1Ng/kennyLtv/LicenseKeys.svg' />
+</a>
