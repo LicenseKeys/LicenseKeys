@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ChangePassword;
 use Auth;
 use DB;
 use Carbon\Carbon;
@@ -17,11 +20,11 @@ class UserController extends Controller
   }
   public function updateUser(Request $request)
   {
-    $userid = Auth::user()->id;
-    $this->validate($request, [
+    $request->validate([
         'email' => 'required',
         'username' => 'min:6|max:255|required',
     ]);
+    $userid = Auth::user()->id;    
     DB::table('users')
       ->where('id', $userid)
       ->update([
@@ -38,29 +41,11 @@ class UserController extends Controller
     ";
   }
 
-  public function changePass(Request $request)
+  public function updatePass(ChangePassword $request)
   {
-    $user = Auth::user()->id;
-    $oldpass = DB::table('users')->where('id', $user)->select('password');
-    // Checking that old password matched what was in the DB
-    if(Hash::check($request->oldpass, $oldpass)){
-    // Checking password length
-      if(strlen($request->newpass) < 10 or strlen($request->newpass) > 120){
-          return 'Password length needs to be between 10 and 120 characters';
-      }
-    //Checking that new passwords match
-      if($request->newpass != $request->newpassconf){
-        return 'New passwords do not match';
-      }
-    // Updating the DB with new password hash
-      DB::table('users')
-        ->where('id', $user)
-        ->update([
-          'password'=> Hash::make($request->newpass),
-          ]);
-    return 'password updated successfully';
-    };
-    return 'password does not match old password.';
+    $password = Auth::user()->password;
+    if(Hash::check($request->password, $password)){
 
+    } 
   }
 }

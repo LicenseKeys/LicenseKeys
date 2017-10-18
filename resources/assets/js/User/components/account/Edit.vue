@@ -1,6 +1,6 @@
 <template>
 <div class="container container-border">
-  <form id="editUser" action="" method="POST">
+  <form id="editUser">
     <div id="form_success" role="alert"></div>
     <div class="form-group row">
       <label for="fname" class="col-sm-2 col-form-label">First Name:</label>

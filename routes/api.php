@@ -5,6 +5,7 @@ Route::prefix('user')->middleware('auth:api')->group( function(){
         return $request->user();
     });
     Route::post('update', 'User\UserController@updateUser');
+    Route::post('update/pass', 'User\UserController@updatePass');
 });    
 
 // Public Endpoint to check license status.
