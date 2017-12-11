@@ -1,3 +1,4 @@
+/storage/*.key
 /bootstrap/compiled.php
 node_modules/
 vendor/

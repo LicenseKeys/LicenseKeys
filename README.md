@@ -1,3 +1,5 @@
+***This application is still under heavy development and is not in a completed state! You will be able to do nothing with it right now***
+
 <img src="https://github.com/kennyLtv/PHP-License-System/blob/master/public/img/logos/logo.png" alt="LicenseKeys" width="300" /></a>
 [![Twitter Follow](https://img.shields.io/badge/Twitter-Follow-lightgrey.svg?style=flat-square)](https://twitter.com/kennyLtv)  [![Facebook Page](https://img.shields.io/badge/Facebook-Like-lightgrey.svg?style=flat-square)](https://www.facebook.com/kennyLtv/)  [![Slack Chat](https://img.shields.io/badge/%23%20Slack-Chat-brightgreen.svg?style=flat-square)](https://kennyl.design/slack)  [![PayPal Donate](https://img.shields.io/badge/PayPal-Donate-blue.svg?style=flat-square)](https://paypal.me/kennyLtv) [![Patreon Page](https://img.shields.io/badge/Patreon-Support-orange.svg)](https://www.patreon.com/kennyL)
 # LicenseKeys

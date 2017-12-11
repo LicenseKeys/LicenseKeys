@@ -31,45 +31,41 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-faded mb-4">
-            <div class="container">
-                <div class="navbar-header">
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mainnav" aria-controls="mainnav" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('img/logos/logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt="">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="mainnav">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        &nbsp;
-                    </ul>
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav mt-2 mt-md-0">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('user.home') }}">Dashboard</a></li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-faded mb-4">
+          <div class="container">
+              <div class="navbar-header">
+                  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mainnav" aria-controls="mainnav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <!-- Branding Image -->
+                  <a class="navbar-brand" href="{{ url('/') }}">
+                      <img src="{{ asset('img/logos/logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt="">
+                      {{ config('app.name', 'Laravel') }}
+                  </a>
+              </div>
+              <div class="collapse navbar-collapse" id="mainnav">
+                  <!-- Left Side Of Navbar -->
+                  <ul class="navbar-nav mr-auto">
+                      &nbsp;
+                  </ul>
+                  <!-- Right Side Of Navbar -->
+                  <ul class="navbar-nav mt-2 mt-md-0">
+                      <!-- Authentication Links -->
+                      @if (Auth::guest())
+                          <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                          <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                      @else
+                          <li class="nav-item"><a class="nav-link" href="{{ route('user_dashboard') }}">Dashboard</a></li>
+                      @endif
+                  </ul>
+              </div>
+          </div>
+      </nav>
 
         @yield('content')
-    </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/users/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script>
         @yield('javascript')
     </script>
