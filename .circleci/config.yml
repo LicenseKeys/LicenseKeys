@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/7.1.4-cli-browsers
+      - image: circleci/php:7.1.9-node
     working_directory: ~/repo
     steps:
       - checkout
@@ -18,7 +18,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/7.1.4-cli-browsers
+      - image: circleci/php:7.1.9-node
     working_directory: ~/repo
     steps:
       - checkout
