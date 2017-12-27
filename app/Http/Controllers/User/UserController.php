@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ChangePassword;
+use Illuminate\Validation\Rule;
 use Auth;
 use DB;
 use Carbon\Carbon;
@@ -20,11 +21,23 @@ class UserController extends Controller
   }
   public function updateUser(Request $request)
   {
-    $request->validate([
-        'email' => 'required',
-        'username' => 'min:6|max:255|required',
-    ]);
     $userid = Auth::user()->id;    
+    $request->validate([
+      'fname' => 'required|string|max:255',
+      'lname' => 'required|string|max:255',
+      'username' => ['required',
+                      'string',
+                      'min:2',
+                      'max:255',
+                      Rule::unique('users')->ignore($userid)
+      ],
+      'email' => ['required',
+                  'string',
+                  'email',
+                  'max:255',
+                  Rule::unique('users')->ignore($userid)
+                ],
+      ]);
     DB::table('users')
       ->where('id', $userid)
       ->update([
