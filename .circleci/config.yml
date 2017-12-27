@@ -5,6 +5,7 @@ jobs:
       - image: circleci/php:7.1.9-node
     working_directory: ~/repo
     steps:
+      - run: sudo apt-get install -y libpng-dev
       - run:
           name: Install PHP Extensions
           command: sudo docker-php-ext-install gd
@@ -24,6 +25,7 @@ jobs:
       - image: circleci/php:7.1.9-node
     working_directory: ~/repo
     steps:
+      - run: sudo apt-get install -y libpng-dev
       - run:
           name: Install PHP Extensions
           command: sudo docker-php-ext-install gd
