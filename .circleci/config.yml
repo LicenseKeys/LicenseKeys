@@ -5,6 +5,9 @@ jobs:
       - image: circleci/php:7.1.9-node
     working_directory: ~/repo
     steps:
+      - run:
+          name: Install PHP Extensions
+          command: sudo docker-php-ext-install gd
       - checkout
       - restore_cache:
           keys:
@@ -21,6 +24,9 @@ jobs:
       - image: circleci/php:7.1.9-node
     working_directory: ~/repo
     steps:
+      - run:
+          name: Install PHP Extensions
+          command: sudo docker-php-ext-install gd
       - checkout
       - restore_cache:
           keys:
