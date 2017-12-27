@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.1-cli-jessie-node-browsers
+      - image: circleci/7.1.4-cli-browsers
     working_directory: ~/repo
     steps:
       - checkout
@@ -18,7 +18,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/php:7.1-cli-jessie-node-browsers
+      - image: circleci/7.1.4-cli-browsers
     working_directory: ~/repo
     steps:
       - checkout
