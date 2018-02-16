@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container container-border">
     <div class="row">
     <div class="col-lg-3">
         <div class="card quick">
@@ -15,7 +15,7 @@
     </div>
     <div class="col-lg-9">
         <table class="table table-striped">
-            <thead class="thead-default">
+            <thead class="thead-danger">
             <tr>
                 <th>ID</th>
                 <th>Title</th>
@@ -35,7 +35,6 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
         }
     }
 </script>

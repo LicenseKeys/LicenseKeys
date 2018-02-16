@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
+    <title>{{ config('app.name', 'LicenseKeys') }} | @yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -65,7 +65,7 @@
         @yield('content')
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bundle.js') }}"></script>
     <script>
         @yield('javascript')
     </script>

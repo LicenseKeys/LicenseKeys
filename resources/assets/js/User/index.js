@@ -4,7 +4,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-require('./bootstrap')
+require('bootstrap')
 import Vue from 'vue'
 import Router from 'vue-router'
 import Vuex from 'vuex'

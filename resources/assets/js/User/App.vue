@@ -26,7 +26,7 @@
         </ul>
       </div>
   </nav>
-  <div class="content">
+  <div class="content"> 
     <router-view></router-view>
   </div>
   </div>
@@ -38,6 +38,7 @@ export default {
   methods: {
    logOut() {
      axios.post('/logout')
+     window.location.replace("/login")
    }
   },
 }
