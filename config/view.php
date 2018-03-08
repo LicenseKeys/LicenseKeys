@@ -14,7 +14,7 @@ return [
     */
 
     'paths' => [
-        resource_path('views' . '/' . config('theme.name')),
+        resource_path('views'),
     ],
 
     /*

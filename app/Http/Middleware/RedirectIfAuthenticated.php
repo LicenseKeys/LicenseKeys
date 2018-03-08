@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Middleware;
+
 use Closure;
 use Illuminate\Support\Facades\Auth;
+
 class RedirectIfAuthenticated
 {
     /**
@@ -14,20 +17,10 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        // Auth level check
-        switch(Auth::guard($guard)->check()){
-            case 'user':
-                return redirect()->route('user_dashboard');
-            case 'support':
-                return redirect()->route('admin_dashboard'); 
-            case 'admin':
-                return redirect()->route('admin_dashboard');                
-            case 'superadmin':
-                return redirect()->route('admin_dashboard');
-            default:
-                return $next($request);
-
+        if (Auth::guard($guard)->check()) {
+            return redirect('/home');
         }
+
         return $next($request);
     }
 }
