@@ -12,13 +12,11 @@
     "devDependencies": {
         "axios": "^0.18",
         "babel-preset-react": "^6.23.0",
-        "bootstrap": "^4.1.1",
         "cross-env": "^5.2.0",
-        "jquery": "^3.2",
-        "laravel-mix": "^2.1.11",
-        "lodash": "^4.17.10",
-        "popper.js": "^1.14.3",
-        "react": "^16.4.1",
-        "react-dom": "^16.4.1"
+        "laravel-mix": "^2.1.14",
+        "lodash": "^4.17.11",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2",
+        "tailwindcss": "^0.6.6"
     }
 }
