@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableLicenseKeys extends Migration
+class CreateLicensesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,13 @@ class CreateTableLicenseKeys extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('licenses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->increments('uid');
+            $table->string("license_key");
+            $table->boolean("valid");
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class CreateTableLicenseKeys extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('licenses');
     }
 }

@@ -7,5 +7,14 @@ use App\Http\Controllers\Controller;
 
 class PublicInfo extends Controller
 {
-    //
+    /**
+     * Public License validation check
+     *
+     * @param  int  $license
+     * @return Response
+     */
+    public function __invoke($license)
+    {
+
+    }
 }
